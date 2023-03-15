@@ -1,2 +1,3 @@
-# mytracker
-myTracker - плагин под WordPress для myTracker
+# Что такое MyTracker
+
+MyTracker — мультиплатформенная система аналитики и атрибуции для мобильных приложений и сайтов.
