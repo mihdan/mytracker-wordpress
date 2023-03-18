@@ -27,7 +27,8 @@
   },
   "require": {
     "php": ">=7.4",
-    "ext-json": "*"
+    "ext-json": "*",
+    "rdlowrey/auryn": "^1.4"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
