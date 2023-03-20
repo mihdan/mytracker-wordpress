@@ -1,3 +1,3 @@
-# Что такое MyTracker
+# About MyTracker
 
-MyTracker — мультиплатформенная система аналитики и атрибуции для мобильных приложений и сайтов.
+MyTracker — Analytics and attribution system for mobile apps and websites.
