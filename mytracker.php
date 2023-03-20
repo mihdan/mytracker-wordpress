@@ -17,6 +17,8 @@
  * @link https://tracker.my.com/docs/sdk/web/api
  * @link https://top.mail.ru/help/ru/api/jsapi
  * @link https://top.mail.ru/help/ru/code/amp
+ * @link https://amp-wp.org/ecosystem/
+ * @link https://amp-wp.org/documentation/getting-started/analytics/
  */
 
 namespace VK\MyTracker;
