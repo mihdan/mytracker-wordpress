@@ -16,7 +16,7 @@ class Settings {
 	 *
 	 * @var WPOSA $wposa
 	 */
-	public $wposa;
+	private $wposa;
 
 	/**
 	 * Constructor.
@@ -45,6 +45,7 @@ class Settings {
 			array(
 				'id'    => 'general',
 				'title' => __( 'General', 'mytracker' ),
+				'desc'  => __( 'MyTracker — это пакет библиотек для сбора статистики по приложениям. Позволяет сформировать единую картину по вашему проекту.', 'mytracker' ),
 			)
 		);
 
@@ -87,6 +88,46 @@ class Settings {
 		$this->wposa->add_field(
 			'general',
 			array(
+				'id'      => 'tracking_amp',
+				'type'    => 'switch',
+				'name'    => __( 'AMP Support', 'mytracker' ),
+				'default' => 'off',
+				'desc'    => __( 'Включает аналитику на AMP-страницах', 'mytracker' ),
+			)
+		);
+
+		$this->wposa->add_section(
+			array(
+				'id'    => 'api',
+				'title' => __( 'S2S API', 'mytracker' ),
+				'desc'  => __( 'S2S API allows you to send data to the MyTracker server. With this API, you can upload any events (for example, user authorization, payments, deliveries, etc.) Uploaded events is added to the project data and displayed in MyTracker reports.', 'mytracker' ),
+			)
+		);
+
+		$this->wposa->add_field(
+			'api',
+			array(
+				'id'   => 'app_id',
+				'type' => 'text',
+				'name' => __( 'App ID', 'mytracker' ),
+				'desc' => __( 'To use MyTracker API you need to get S2S API key', 'mytracker' ),
+			)
+		);
+
+		$this->wposa->add_field(
+			'api',
+			array(
+				'id'          => 'api_key',
+				'type'        => 'text',
+				'name'        => __( 'API Key', 'mytracker' ),
+				'desc'        => __( 'To use MyTracker API you need to get S2S API key', 'mytracker' ),
+				'placeholder' => '6jT9Firgf35Z2zDEB0v8ZniBgr8WTq0IcZlecewFWZImrs5KXcRbdDMLgdQj05iO',
+			)
+		);
+
+		$this->wposa->add_field(
+			'api',
+			array(
 				'id'      => 'tracking_sign_in',
 				'type'    => 'switch',
 				'name'    => __( 'Tracking login', 'mytracker' ),
@@ -96,24 +137,13 @@ class Settings {
 		);
 
 		$this->wposa->add_field(
-			'general',
+			'api',
 			array(
 				'id'      => 'tracking_sign_up',
 				'type'    => 'switch',
 				'name'    => __( 'Tracking registration', 'mytracker' ),
 				'default' => 'off',
 				'desc'    => __( 'Сбор данных о регистрации пользователей', 'mytracker' ),
-			)
-		);
-
-		$this->wposa->add_field(
-			'general',
-			array(
-				'id'      => 'tracking_amp',
-				'type'    => 'switch',
-				'name'    => __( 'AMP Support', 'mytracker' ),
-				'default' => 'off',
-				'desc'    => __( 'Включает аналитику на AMP-страницах', 'mytracker' ),
 			)
 		);
 	}

@@ -74,22 +74,16 @@ class Main {
 	 */
 	private function load_requirements(): void {
 
-		$wposa = $this->make(
-			WPOSA::class,
-			[
-				':plugin_name'    => Utils::get_plugin_name(),
-				':plugin_version' => Utils::get_plugin_version(),
-				':plugin_slug'    => Utils::get_plugin_slug(),
-				':plugin_prefix'  => Utils::get_plugin_prefix(),
-			]
-		);
-
-		$this->wposa = $wposa;
+		$this->wposa = $this->make( WPOSA::class );
+		$this->wposa->set_plugin_name( Utils::get_plugin_name() );
+		$this->wposa->set_plugin_version( Utils::get_plugin_version() );
+		$this->wposa->set_plugin_slug( Utils::get_plugin_slug() );
+		$this->wposa->set_plugin_prefix( Utils::get_plugin_prefix() );
 		$this->wposa->setup_hooks();
 
 		( $this->make( Settings::class ) )->setup_hooks();
 		( $this->make( Code::class ) )->setup_hooks();
-		//( $this->make( Amp::class ) )->setup_hooks();
+		( $this->make( S2S::class ) )->setup_hooks();
 	}
 
 	/**
@@ -100,6 +94,18 @@ class Main {
 	private function setup_hooks(): void {
 		add_filter( 'plugin_action_links', [ $this, 'add_settings_link' ], 10, 2 );
 		add_filter( 'admin_footer_text', [ $this, 'add_footer_text' ] );
+		add_action( 'wp_head', [ $this, 'add_generator_text' ] );
+	}
+
+	/**
+	 * Выводит информацию в метатеги о себе.
+	 *
+	 * @return void
+	 */
+	public function add_generator_text(): void {
+		?>
+		<meta name="generator" content="<?php echo esc_attr( Utils::get_plugin_name() ); ?> <?php echo esc_attr( Utils::get_plugin_version() ); ?>" />
+		<?php
 	}
 
 	/**
@@ -120,12 +126,12 @@ class Main {
 	/**
 	 * Add plugin action links
 	 *
-	 * @param array  $actions Default actions.
+	 * @param array  $actions     Default actions.
 	 * @param string $plugin_file Plugin file.
 	 *
 	 * @return array
 	 */
-	public function add_settings_link( $actions, $plugin_file ) {
+	public function add_settings_link( array $actions, string $plugin_file ): array {
 		if ( Utils::get_plugin_basename() === $plugin_file ) {
 			$actions[] = sprintf(
 				'<a href="%s">%s</a>',
