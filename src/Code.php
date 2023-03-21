@@ -52,7 +52,6 @@ class Code {
 	 */
 	public function __construct( WPOSA $wposa ) {
 		$this->wposa      = $wposa;
-		$this->user_id    = get_current_user_id();
 		$this->counter_id = (int) $this->wposa->get_option( 'counter_id', 'general', 0 );
 		$this->domain     = $this->wposa->get_option( 'domain', 'general', 'ru' );
 	}
@@ -85,11 +84,21 @@ class Code {
 	}
 
 	/**
+	 * Устанавливает идентификатор текущего пользователя.
+	 *
+	 * @return void
+	 */
+	public function set_user_id(): void {
+		$this->user_id = get_current_user_id();
+	}
+
+	/**
 	 * Инициализация хуков.
 	 *
 	 * @return void
 	 */
 	public function setup_hooks(): void {
+		add_action( 'plugins_loaded', [ $this, 'set_user_id' ] );
 		add_action(
 			'init',
 			function () {
@@ -187,8 +196,6 @@ class Code {
 		$user_id       = $this->get_user_id();
 		$domain        = $this->get_domain();
 		$tracking_user = $this->is_tracking_user_active();
-
-		$domain = self::DOMAINS[ $domain ];
 		?>
 		<!-- Top.Mail.Ru counter -->
 		<script type="text/javascript">
