@@ -117,28 +117,28 @@ class WPOSA {
 	 *
 	 * @var string
 	 */
-	private $plugin_name;
+	private string $plugin_name;
 
 	/**
 	 * Plugin version.
 	 *
 	 * @var string
 	 */
-	private $plugin_version;
+	private string $plugin_version;
 
 	/**
 	 * Plugin slug.
 	 *
 	 * @var string
 	 */
-	private $plugin_slug;
+	private string $plugin_slug;
 
 	/**
 	 * Plugin prefix.
 	 *
 	 * @var string
 	 */
-	private $plugin_prefix;
+	private string $plugin_prefix;
 
 	/**
 	 * Sections array.
@@ -146,7 +146,7 @@ class WPOSA {
 	 * @var   array
 	 * @since 1.0.0
 	 */
-	private $sections_array = array();
+	private array $sections_array = [];
 
 	/**
 	 * Fields array.
@@ -154,14 +154,14 @@ class WPOSA {
 	 * @var   array
 	 * @since 1.0.0
 	 */
-	private $fields_array = array();
+	private array $fields_array = [];
 
 	/**
 	 * Sidebar card array.
 	 *
 	 * @var array $sidebar_cards
 	 */
-	private $sidebar_cards = [];
+	private array $sidebar_cards = [];
 
 	/**
 	 * Constructor.
@@ -179,8 +179,44 @@ class WPOSA {
 		$this->plugin_prefix  = $plugin_prefix;
 	}
 
-	public function get_prefix(): string {
+	public function get_plugin_prefix(): string {
 		return $this->plugin_prefix;
+	}
+
+	public function set_plugin_prefix( string $plugin_prefix ): WPOSA {
+		$this->plugin_prefix = $plugin_prefix;
+
+		return $this;
+	}
+
+	public function get_plugin_name(): string {
+		return $this->plugin_name;
+	}
+
+	public function set_plugin_name( string $plugin_name ): WPOSA {
+		$this->plugin_name = $plugin_name;
+
+		return $this;
+	}
+
+	public function get_plugin_version(): string {
+		return $this->plugin_version;
+	}
+
+	public function set_plugin_version( string $plugin_version ): WPOSA {
+		$this->plugin_version = $plugin_version;
+
+		return $this;
+	}
+
+	public function get_plugin_slug(): string {
+		return $this->plugin_slug;
+	}
+
+	public function set_plugin_slug( string $plugin_slug ): WPOSA {
+		$this->plugin_slug = $plugin_slug;
+
+		return $this;
 	}
 
 	public function setup_hooks() {
@@ -248,7 +284,7 @@ class WPOSA {
 			return false;
 		}
 
-		$section['id'] = $this->get_prefix() . '_' . $section['id'];
+		$section['id'] = $this->get_plugin_prefix() . '_' . $section['id'];
 
 		// Assign the section to sections array.
 		$this->sections_array[] = $section;
@@ -281,7 +317,7 @@ class WPOSA {
 	 *
 	 * @since 1.0.0
 	 */
-	public function add_field( $section, $field_array ) {
+	public function add_field( $section, $field_array ): WPOSA {
 		// Set the defaults
 		$defaults = array(
 			'id'   => '',
@@ -294,7 +330,7 @@ class WPOSA {
 		$arg = wp_parse_args( $field_array, $defaults );
 
 		// Each field is an array named against its section.
-		$this->fields_array[ $this->get_prefix() . '_' . $section ][] = $arg;
+		$this->fields_array[ $this->get_plugin_prefix() . '_' . $section ][] = $arg;
 
 		return $this;
 	}
@@ -919,8 +955,8 @@ class WPOSA {
 	 * @return mixed
 	 */
 	public function get_option( string $option, string $section, $default = '' ) {
-		$section = str_replace( $this->get_prefix() . '_', '', $section );
-		$options = get_option( $this->get_prefix() . '_' . $section );
+		$section = str_replace( $this->get_plugin_prefix() . '_', '', $section );
+		$options = get_option( $this->get_plugin_prefix() . '_' . $section );
 
 		if ( isset( $options[ $option ] ) ) {
 			return apply_filters( 'wposa/get_option', $options[ $option ], $option, $section, $default );
@@ -930,7 +966,7 @@ class WPOSA {
 	}
 
 	public function set_option( string $option, $value, string $section ): bool {
-		$name = $this->get_prefix() . '_' . $section;
+		$name = $this->get_plugin_prefix() . '_' . $section;
 
 		// Get option.
 		$options = get_option( $name );
@@ -978,7 +1014,7 @@ class WPOSA {
 				<?php if ( $this->get_sidebar_cards_total() ) : ?>
 					<div class="wrap-column wrap-column--sidebar">
 						<?php foreach ( $this->get_sidebar_cards() as $card ) : ?>
-							<div class="card wpsa-card wpsa-card--<?php echo esc_attr( $this->get_prefix() )?>_<?php echo esc_attr( $card['id'] )?>">
+							<div class="card wpsa-card wpsa-card--<?php echo esc_attr( $this->get_plugin_prefix() )?>_<?php echo esc_attr( $card['id'] )?>">
 								<?php if ( ! empty( $card['title'] ) ) : ?>
 									<h2 class="title"><?php echo esc_html( $card['title'] )?></h2>
 								<?php endif; ?>
