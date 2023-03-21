@@ -1,5 +1,11 @@
 # About MyTracker
 
+![CS](https://github.com/Yoast/wordpress-seo/actions/workflows/cs.yml/badge.svg)
+![Lint](https://github.com/Yoast/wordpress-seo/actions/workflows/lint.yml/badge.svg)
+![Unit Tests](https://github.com/Yoast/wordpress-seo/actions/workflows/unittest.yml/badge.svg)
+![Deployment](https://github.com/Yoast/wordpress-seo/actions/workflows/deploy.yml/badge.svg)
+![License](https://poser.pugx.org/yoast/wordpress-seo/license.svg)
+
 MyTracker — Analytics and attribution system for mobile apps and websites.
 
 ## Разработка
