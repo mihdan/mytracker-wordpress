@@ -8,6 +8,11 @@
       "VK\\MyTracker\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "VK\\MyTracker\\": "tests/phpunit/tests"
+    }
+  },
   "authors": [
     {
       "name": "Mikhail Kobzarev",
@@ -32,6 +37,9 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
+    "10up/wp_mock": "0.2 - 0.5",
+    "lucatume/function-mocker": "dev-master",
+    "phpunit/phpunit": "5.7 - 9.5",
     "squizlabs/php_codesniffer": "^3.6",
     "phpcompatibility/php-compatibility": "^9.3",
     "phpcompatibility/phpcompatibility-wp": "^2.1",
@@ -42,6 +50,7 @@
   "scripts": {
     "phpcs": "phpcs --standard=./phpcs.xml",
     "phpcbf": "phpcbf --standard=./phpcs.xml",
-    "psalm": "vendor/bin/psalm --config=psalm.xml"
+    "psalm": "vendor/bin/psalm --config=./psalm.xml",
+    "unit": "phpunit -c ./phpunit.xml"
   }
 }
