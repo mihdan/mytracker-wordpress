@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: MyTracker
- * Description: Мультиплатформенная система аналитики и атрибуции для мобильных приложений и сайтов.
- * Version: 1.0.0
+ * Description: MyTracker is multi-platform analytics and attribution for mobile apps and websites.
+ * Version: 1.0.1
  * Author: VK Team
  * Author URI: https://vk.team
  * Plugin URI: https://wordpress.org/plugins/mytracker/
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'VK_MYTRACKER_VERSION', '1.0.0' );
+define( 'VK_MYTRACKER_VERSION', '1.0.1' );
 define( 'VK_MYTRACKER_NAME', 'MyTracker' );
 define( 'VK_MYTRACKER_PREFIX', 'mytracker' );
 define( 'VK_MYTRACKER_SLUG', 'mytracker' );

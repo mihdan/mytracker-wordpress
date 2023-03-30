@@ -45,7 +45,11 @@ class Settings {
 			array(
 				'id'    => 'general',
 				'title' => __( 'General', 'mytracker' ),
-				'desc'  => __( 'MyTracker — это пакет библиотек для сбора статистики по приложениям. Позволяет сформировать единую картину по вашему проекту.', 'mytracker' ),
+				'desc'  => sprintf(
+					/* translators: %s: Official site */
+					__( 'MyTracker is multi-platform analytics and attribution for mobile apps and websites. More details at <a href="%1$s" target="_blank">%1$s</a>.', 'mytracker' ),
+					'https://tracker.my.com/'
+				),
 			)
 		);
 
@@ -55,7 +59,7 @@ class Settings {
 				'id'          => 'counter_id',
 				'type'        => 'number',
 				'name'        => __( 'Counter ID', 'mytracker' ),
-				'desc'        => __( 'Идентификатор счётчика от Рейтинга Mail.Ru', 'mytracker' ),
+				'desc'        => __( 'Web Counter ID in your account MyTracker.', 'mytracker' ),
 				'placeholder' => '3308081',
 			)
 		);
@@ -70,7 +74,7 @@ class Settings {
 					'ru'  => __( 'RU domain', 'mytracker' ),
 					'com' => __( 'COM domain', 'mytracker' ),
 				],
-				'desc'    => __( 'С помощью RU домена вы можете отслеживать посещения сайта из регионов, в которых доступны VK сервисы. Если необходимо отслеживать посещения сайта из регионов, в которых доступ к сервисам VK ограничен, выберите COM домен.', 'mutracker' ),
+				'desc'    => __( 'To track website visits from regions where the VK services are available, use the RU domain. Select the COM domain if you need to track website visits from regions where the VK services are not available.', 'mutracker' ),
 			)
 		);
 
@@ -81,7 +85,7 @@ class Settings {
 				'type'    => 'switch',
 				'name'    => __( 'Tracking user', 'mytracker' ),
 				'default' => 'off',
-				'desc'    => __( 'Позволяет отслеживать статистики не только по устройствам, но и по пользователям сайта', 'mytracker' ),
+				'desc'    => __( 'Allows you to track statistics not only on devices, but also on registered users of your site.', 'mytracker' ),
 			)
 		);
 
@@ -92,15 +96,15 @@ class Settings {
 				'type'    => 'switch',
 				'name'    => __( 'AMP Support', 'mytracker' ),
 				'default' => 'off',
-				'desc'    => __( 'Включает аналитику на AMP-страницах', 'mytracker' ),
+				'desc'    => __( 'Enables analytics on AMP pages.', 'mytracker' ),
 			)
 		);
 
 		$this->wposa->add_section(
 			array(
 				'id'    => 'api',
-				'title' => __( 'S2S API', 'mytracker' ),
-				'desc'  => __( 'S2S API allows you to send data to the MyTracker server. With this API, you can upload any events (for example, user authorization, payments, deliveries, etc.) Uploaded events is added to the project data and displayed in MyTracker reports.', 'mytracker' ),
+				'title' => __( 'API', 'mytracker' ),
+				'desc'  => __( 'S2S API allows you to send data to the MyTracker server. With this API, you can upload any events (for example, user registration and authorization) Uploaded events is added to the project data and displayed in MyTracker reports.', 'mytracker' ),
 			)
 		);
 
@@ -110,7 +114,7 @@ class Settings {
 				'id'   => 'app_id',
 				'type' => 'text',
 				'name' => __( 'App ID', 'mytracker' ),
-				'desc' => __( 'To use MyTracker API you need to get S2S API key', 'mytracker' ),
+				'desc' => __( 'Enter idApp web application from your MyTracker account.', 'mytracker' ),
 			)
 		);
 
@@ -120,7 +124,7 @@ class Settings {
 				'id'          => 'api_key',
 				'type'        => 'text',
 				'name'        => __( 'API Key', 'mytracker' ),
-				'desc'        => __( 'To use MyTracker API you need to get S2S API key', 'mytracker' ),
+				'desc'        => __( 'Enter S2S API key from your MyTracker account.', 'mytracker' ),
 				'placeholder' => '6jT9Firgf35Z2zDEB0v8ZniBgr8WTq0IcZlecewFWZImrs5KXcRbdDMLgdQj05iO',
 			)
 		);
@@ -132,7 +136,7 @@ class Settings {
 				'type'    => 'switch',
 				'name'    => __( 'Tracking login', 'mytracker' ),
 				'default' => 'off',
-				'desc'    => __( 'Сбор данных об авторизации пользователей', 'mytracker' ),
+				'desc'    => __( 'Tracking user authorization.', 'mytracker' ),
 			)
 		);
 
@@ -143,7 +147,7 @@ class Settings {
 				'type'    => 'switch',
 				'name'    => __( 'Tracking registration', 'mytracker' ),
 				'default' => 'off',
-				'desc'    => __( 'Сбор данных о регистрации пользователей', 'mytracker' ),
+				'desc'    => __( 'Tracking user registration.', 'mytracker' ),
 			)
 		);
 	}

@@ -73,6 +73,9 @@ class WPOSA {
 		'h2'       => [
 			'class' => true,
 		],
+		'nav'      => [
+			'class' => true,
+		],
 		'span'     => [
 			'class' => true,
 			'style' => true,
@@ -1029,7 +1032,7 @@ class WPOSA {
 	 * Shows all the settings section labels as tab
 	 */
 	function show_navigation() {
-		$html = '<h2 class="nav-tab-wrapper">';
+		$html = '<nav class="nav-tab-wrapper">';
 
 		foreach ( $this->sections_array as $tab ) {
 			if ( isset( $tab['disabled'] ) && $tab['disabled'] === true ) {
@@ -1043,7 +1046,7 @@ class WPOSA {
 			}
 		}
 
-		$html .= '</h2>';
+		$html .= '</nav>';
 
 		echo wp_kses( $html, self::ALLOWED_HTML );
 	}
