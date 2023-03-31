@@ -74,7 +74,7 @@ class Settings {
 					'ru'  => __( 'RU domain', 'mytracker' ),
 					'com' => __( 'COM domain', 'mytracker' ),
 				],
-				'desc'    => __( 'To track website visits from regions where the VK services are available, use the RU domain. Select the COM domain if you need to track website visits from regions where the VK services are not available.', 'mutracker' ),
+				'desc'    => __( 'To track website visits from regions where the VK services are available, use the RU domain. Select the COM domain if you need to track website visits from regions where the VK services are not available.', 'mytracker' ),
 			)
 		);
 
@@ -148,6 +148,17 @@ class Settings {
 				'name'    => __( 'Tracking registration', 'mytracker' ),
 				'default' => 'off',
 				'desc'    => __( 'Tracking user registration.', 'mytracker' ),
+			)
+		);
+
+		$this->wposa->add_field(
+			'api',
+			array(
+				'id'      => 'debugging',
+				'type'    => 'switch',
+				'name'    => __( 'Debugging', 'mytracker' ),
+				'default' => 'off',
+				'desc'    => __( 'Debugging API queries.', 'mytracker' ),
 			)
 		);
 	}

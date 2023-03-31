@@ -84,6 +84,7 @@ class Main {
 		( $this->make( Settings::class ) )->setup_hooks();
 		( $this->make( Code::class ) )->setup_hooks();
 		( $this->make( S2S::class ) )->setup_hooks();
+		( $this->make( Logger::class ) )->setup_hooks();
 	}
 
 	/**

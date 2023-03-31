@@ -21,6 +21,13 @@ class S2S {
 	 */
 	public $wposa;
 
+	/**
+	 * Logger instance.
+	 *
+	 * @var Logger $logger
+	 */
+	public $logger;
+
 	const API_BASE = 'https://tracker-s2s.my.com/v1/%s/?idApp=%d';
 
 	/**
@@ -40,12 +47,41 @@ class S2S {
 	/**
 	 * Constructor.
 	 *
-	 * @param WPOSA $wposa WPOSA instance.
+	 * @param WPOSA  $wposa  WPOSA instance.
+	 * @param Logger $logger Logger instance.
 	 */
-	public function __construct( WPOSA $wposa ) {
+	public function __construct( WPOSA $wposa, Logger $logger ) {
 		$this->wposa   = $wposa;
+		$this->logger  = $logger;
 		$this->app_id  = (int) $this->wposa->get_option( 'app_id', 'api', 0 );
 		$this->api_key = $this->wposa->get_option( 'api_key', 'api', '' );
+	}
+
+	/**
+	 * Проверяет активность фичи по трекингу авторизаций.
+	 *
+	 * @return bool
+	 */
+	public function is_tracking_tracking_sign_in_active(): bool {
+		return $this->wposa->get_option( 'tracking_sign_in', 'api', 'off' ) === 'on';
+	}
+
+	/**
+	 * Проверяет активность фичи по трекингу регистраций.
+	 *
+	 * @return bool
+	 */
+	public function is_tracking_tracking_sign_up_active(): bool {
+		return $this->wposa->get_option( 'tracking_sign_up', 'api', 'off' ) === 'on';
+	}
+
+	/**
+	 * Проверяет активность фичи по отладке запросов.
+	 *
+	 * @return bool
+	 */
+	public function is_debugging_active(): bool {
+		return $this->wposa->get_option( 'debugging', 'api', 'off' ) === 'on';
 	}
 
 	/**
@@ -85,6 +121,10 @@ class S2S {
 	 * @return void
 	 */
 	public function on_login( string $login, WP_User $user ): void {
+		if ( ! $this->is_tracking_tracking_sign_in_active() ) {
+			return;
+		}
+
 		$this->send_login_event(
 			[
 				'customUserId' => $user->ID,
@@ -101,6 +141,10 @@ class S2S {
 	 * @return void
 	 */
 	public function on_registration( int $user_id ): void {
+		if ( ! $this->is_tracking_tracking_sign_up_active() ) {
+			return;
+		}
+
 		$this->send_registration_event(
 			[
 				'customUserId' => $user_id,
@@ -158,12 +202,17 @@ class S2S {
 			$args
 		);
 
+		if ( $this->is_debugging_active() ) {
+			$this->logger->log( $args );
+			$this->logger->log( $response );
+		}
+
 		$status = wp_remote_retrieve_response_code( $response );
 
 		if ( $status === 200 ) {
 			return true;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 }
