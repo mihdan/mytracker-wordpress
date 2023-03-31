@@ -1,5 +1,5 @@
 === MyTracker ===
-Contributors: mihdan,mytacker
+Contributors: mihdan,mytracker
 Tags: mytracker,vk,mailru,analytics
 Requires at least: 5.0
 Tested up to: 6.2
