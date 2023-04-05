@@ -4,7 +4,7 @@ Tags: mytracker,vk,mailru,analytics
 Requires at least: 5.0
 Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,12 +49,17 @@ Track and measure all of your monetization efforts with MyTracker: in-app purcha
 
 == Changelog ==
 
-= 1.0.2 (31.03.3023) =
+= 1.0.3 (05.04.2023) =
+- Added ability to delete log file
+- Added links to documentation in plugin settings
+- Fixed a bug in integration with the official amp plugin
+
+= 1.0.2 (31.03.2023) =
 - Added ability to debug API queries
 
-= 1.0.1 (30.03.3023) =
+= 1.0.1 (30.03.2023) =
 - Translations updated
 - Added a plugin header
 
-= 1.0.0 (20.03.3023) =
+= 1.0.0 (20.03.2023) =
 - Plugin init
