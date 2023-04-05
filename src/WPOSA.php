@@ -231,6 +231,9 @@ class WPOSA {
 
 		// Menu.
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+
+		// Thickbox.
+		add_thickbox();
 	}
 
 	/**
@@ -918,9 +921,11 @@ class WPOSA {
 		$value = $args['placeholder'] ?? __( 'Submit' );
 		$class = 'button-secondary';
 		$id    = $args['id'] ?? time();
+		$id    = $args['section'] . '_'. $id;
 		?>
 		<input
 			type="button"
+			data-nonce="<?php echo esc_attr( wp_create_nonce() ); ?>"
 			id="<?php echo esc_attr( $id ); ?>"
 			value="<?php echo esc_attr( $value ); ?>"
 			class="button <?php echo esc_attr( $class ); ?>"
@@ -929,7 +934,7 @@ class WPOSA {
 	}
 
 	/**
-	 * Displays a Button field for a settings field
+	 * Displays a Hidden field for a settings field
 	 *
 	 * @param array $args settings field args
 	 */
@@ -1016,7 +1021,13 @@ class WPOSA {
 								<?php if ( ! empty( $card['title'] ) ) : ?>
 									<h2 class="title"><?php echo esc_html( $card['title'] )?></h2>
 								<?php endif; ?>
-								<?php echo wp_kses( $card['desc'], self::ALLOWED_HTML ); ?>
+								<?php
+								if ( is_callable( $card['desc'] ) ) {
+									call_user_func( $card['desc'] );
+								} else {
+									echo wp_kses( $card['desc'], self::ALLOWED_HTML );
+								}
+								?>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -1114,8 +1125,10 @@ class WPOSA {
 		<script>
 			jQuery( document ).ready( function( $ ) {
 
-				const $show_settings_toggler = $('.show-settings');
-				const $help = $('.wpsa-help-tab-toggle');
+				const
+					$show_settings_toggler = $( '.show-settings' ),
+					$help = $( '.wpsa-help-tab-toggle' ),
+					wp = window.wp;
 
 				$help.on(
 					'click',
@@ -1225,15 +1238,27 @@ class WPOSA {
 					})
 					.change();
 
-				const REDIRECT_URL  = '<?php echo esc_url( admin_url( 'admin.php?page=' . Utils::get_plugin_slug() ) ); ?>';
-				const CODE_ENDPOINT = 'https://oauth.yandex.ru/authorize?state=yandex-webmaster&response_type=code&force_confirm=yes&redirect_uri=' + REDIRECT_URL + '&client_id=';
-
-				$( '#button_get_token' ).on(
+				$( '#mytracker_api_remove_log' ).on(
 					'click',
 					function() {
-						const CLIENT_ID = document.getElementById( 'mihdan_index_now_yandex_webmaster[client_id]' ).value;
-
-						window.location.href = CODE_ENDPOINT + CLIENT_ID;
+						wp.ajax.send(
+							'mytracker_api_remove_log',
+							{
+								data: {
+									nonce: $( this ).data( 'nonce' )
+								}
+							}
+						).always(
+							function( response ) {
+								if ( response.success && response.success === true ) {
+									document.location.reload();
+								} else {
+									tb_show( 'Error', '/?TB_inline&inlineId=foo&width=300&height=70' );
+									const $modal = $( '#TB_ajaxContent' );
+									$modal.html( '<p>' + response.message + '</p>' );
+								}
+							}
+						)
 					}
 				);
 			});

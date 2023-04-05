@@ -19,12 +19,21 @@ class Settings {
 	private $wposa;
 
 	/**
+	 * Logger instance.
+	 *
+	 * @var Logger
+	 */
+	private $logger;
+
+	/**
 	 * Constructor.
 	 *
-	 * @param WPOSA $wposa WPOSA instance.
+	 * @param WPOSA  $wposa  WPOSA instance.
+	 * @param Logger $logger Logger instance.
 	 */
-	public function __construct( WPOSA $wposa ) {
-		$this->wposa = $wposa;
+	public function __construct( WPOSA $wposa, Logger $logger ) {
+		$this->wposa  = $wposa;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -41,12 +50,37 @@ class Settings {
 	 */
 	public function setup_fields() {
 
+		$this->wposa->add_sidebar_card(
+			[
+				'id'    => 'attention',
+				'title' => __( 'Attention', 'mytracker' ),
+				'desc'  => __( 'Uploading statistics into tracker database can take about one to two hours.', 'mytracker' ),
+			]
+		);
+
+		$this->wposa->add_sidebar_card(
+			[
+				'id'    => 'documentation',
+				'title' => __( 'Documentation', 'mytracker' ),
+				'desc'  => function() {
+					?>
+					<ol>
+						<li><a href="https://tracker.my.com/promo" target="_blank">Promo page</a></li>
+						<li><a href="https://tracker.my.com/docs/sdk/about" target="_blank">SDK integration</a></li>
+						<li><a href="https://tracker.my.com/docs/api/s2s-api/about" target="_blank">S2S API</a></li>
+						<li><a href="https://tracker.my.com/account/list/" target="_blank">Account</a></li>
+					</ol>
+					<?php
+				},
+			]
+		);
+
 		$this->wposa->add_section(
 			array(
 				'id'    => 'general',
 				'title' => __( 'General', 'mytracker' ),
 				'desc'  => sprintf(
-					/* translators: %s: Official site */
+				/* translators: %s: Official site */
 					__( 'MyTracker is multi-platform analytics and attribution for mobile apps and websites. More details at <a href="%1$s" target="_blank">%1$s</a>.', 'mytracker' ),
 					'https://tracker.my.com/'
 				),
@@ -158,8 +192,21 @@ class Settings {
 				'type'    => 'switch',
 				'name'    => __( 'Debugging', 'mytracker' ),
 				'default' => 'off',
-				'desc'    => __( 'Debugging API queries.', 'mytracker' ),
+				'desc'    => __( 'Debugging API queries.', 'mytracker' ) . ( $this->logger->log_exists() ? sprintf( ' <a href="%s" download="mytracker.log" target="_blank">%s</a>', $this->logger->get_url(), __( 'View log file', 'mytracker' ) ) : '' ),
 			)
 		);
+
+		if ( $this->logger->log_exists() ) {
+			$this->wposa->add_field(
+				'api',
+				array(
+					'id'          => 'remove_log',
+					'type'        => 'button',
+					'placeholder' => __( 'Remove Log', 'mytracker' ),
+					'default'     => 'off',
+					'desc'        => __( 'Debugging API queries.', 'mytracker' ),
+				)
+			);
+		}
 	}
 }
