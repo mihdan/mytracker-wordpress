@@ -81,10 +81,10 @@ class Main {
 		$this->wposa->set_plugin_prefix( Utils::get_plugin_prefix() );
 		$this->wposa->setup_hooks();
 
+		( $this->make( Logger::class ) )->setup_hooks();
 		( $this->make( Settings::class ) )->setup_hooks();
 		( $this->make( Code::class ) )->setup_hooks();
 		( $this->make( S2S::class ) )->setup_hooks();
-		( $this->make( Logger::class ) )->setup_hooks();
 	}
 
 	/**
