@@ -168,20 +168,19 @@ class Code {
 
 		$analytics_entries[ self::ANALYTICS_ID ] = [
 			'type'   => self::ANALYTICS_ID,
-			'config' => wp_json_encode(
-				[
-					'requests' => [
-						'pageview' => 'https://example.com/view',
-					],
-					'triggers' => [
-						'trackPageview' => [
-							'on'      => 'visible',
-							'request' => 'pageview',
-						],
-					],
-				]
-			),
+			'config' => [
+				'vars' => [
+					'id' => $counter_id,
+				],
+			],
 		];
+
+		// Отслеживание пользователя.
+		if ( $tracking_user ) {
+			$analytics_entries[ self::ANALYTICS_ID ]['config']['vars']['userid'] = $user_id;
+		}
+
+		$analytics_entries[ self::ANALYTICS_ID ]['config'] = wp_json_encode( $analytics_entries[ self::ANALYTICS_ID ]['config'] );
 
 		return $analytics_entries;
 	}
