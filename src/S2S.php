@@ -203,7 +203,7 @@ class S2S {
 		);
 
 		if ( $this->is_debugging_active() ) {
-			$this->logger->log( $args );
+			$this->logger->log( $data );
 			$this->logger->log( $response );
 		}
 
