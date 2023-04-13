@@ -185,8 +185,13 @@ class S2S {
 	private function request( string $method, array $data ): bool {
 		$defaults = [
 			'eventTimestamp' => time(),
-			'lvid'           => $this->get_lvid(),
 		];
+
+		$lvid = $this->get_lvid();
+
+		if ( $lvid ) {
+			$defaults['lvid'] = $lvid;
+		}
 
 		$data = wp_parse_args( $data, $defaults );
 
@@ -219,6 +224,14 @@ class S2S {
 	 * @return string
 	 */
 	private function get_lvid(): string {
-		return sanitize_text_field( wp_unslash( $_COOKIE[ Utils::get_plugin_slug() . '_lvid' ] ?? '' ) );
+		$cookie_name = Utils::get_plugin_slug() . '_lvid';
+
+		$lvid = sanitize_text_field( wp_unslash( $_COOKIE[ $cookie_name ] ?? '' ) );
+
+		if ( $lvid === '' || mb_strlen( $lvid ) !== 32 ) {
+			return '';
+		}
+
+		return $lvid;
 	}
 }
