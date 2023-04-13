@@ -4,7 +4,7 @@ Tags: mytracker,vk,mailru,analytics
 Requires at least: 5.0
 Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Track and measure all of your monetization efforts with MyTracker: in-app purcha
 2. Activate the plugin through the ‘Plugins’ menu in WordPress.
 
 == Changelog ==
+
+= 1.0.4 (13.04.2023) =
+- Added ability to track a user by device
 
 = 1.0.3 (05.04.2023) =
 - Added ability to delete log file

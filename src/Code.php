@@ -201,10 +201,30 @@ class Code {
 			var _tmr = window._tmr || (window._tmr = []);
 
 			<?php if ( $tracking_user ) : ?>
-				_tmr.push({ type: 'setUserID', userid: "<?php echo esc_attr( $user_id ); ?>" });
+				// Отправка UserID.
+				_tmr.push({
+					type: 'setUserID',
+					userid: "<?php echo esc_attr( $user_id ); ?>"
+				});
 			<?php endif; ?>
 
-			_tmr.push({id: "<?php echo esc_attr( $counter_id ); ?>", type: "pageView", start: (new Date()).getTime()});
+			// Отправка lvid.
+			_tmr.push({
+				type:     'onready',
+				callback: function() {
+					const
+						cookieName = '<?php echo esc_attr( Utils::get_plugin_slug() ); ?>_lvid',
+						cookieValue = _tmr.getClientID();
+
+					document.cookie = encodeURIComponent(cookieName) + '=' + encodeURIComponent(cookieValue);
+				}
+			});
+
+			_tmr.push({
+				id: "<?php echo esc_attr( $counter_id ); ?>",
+				type: "pageView",
+				start: (new Date()).getTime()
+			});
 
 			(function (d, w, id) {
 				if (d.getElementById(id)) return;

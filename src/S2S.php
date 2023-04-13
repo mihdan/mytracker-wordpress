@@ -185,6 +185,7 @@ class S2S {
 	private function request( string $method, array $data ): bool {
 		$defaults = [
 			'eventTimestamp' => time(),
+			'lvid'           => $this->get_lvid(),
 		];
 
 		$data = wp_parse_args( $data, $defaults );
@@ -209,10 +210,15 @@ class S2S {
 
 		$status = wp_remote_retrieve_response_code( $response );
 
-		if ( $status === 200 ) {
-			return true;
-		}
+		return $status === 200;
+	}
 
-		return false;
+	/**
+	 * Получается идентификатор устройства пользователя.
+	 *
+	 * @return string
+	 */
+	private function get_lvid(): string {
+		return sanitize_text_field( wp_unslash( $_COOKIE[ Utils::get_plugin_slug() . '_lvid' ] ?? '' ) );
 	}
 }
