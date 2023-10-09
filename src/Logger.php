@@ -2,10 +2,10 @@
 /**
  * Class Logger.
  *
- * @package mytracker
+ * @package vkanalytics
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 /**
  * Логирование данных в текстовый файл.

@@ -2,10 +2,10 @@
 /**
  * Class Test_Utils.
  *
- * @package mytracker
+ * @package vkanalytics
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 use PHPUnit\Framework\TestCase;
 use tad\FunctionMocker\FunctionMocker;
@@ -22,7 +22,7 @@ class UtilsTest extends TestCase {
 		$constant    = FunctionMocker::replace( 'constant', $plugin_name );
 
 		self::assertSame( $plugin_name, Utils::get_plugin_name() );
-		$constant->wasCalledWithOnce( [ 'VK_MYTRACKER_NAME' ] );
+		$constant->wasCalledWithOnce( [ 'VK_ANALYTICS_NAME' ] );
 	}
 
 	/**
@@ -33,6 +33,6 @@ class UtilsTest extends TestCase {
 		$constant = FunctionMocker::replace( 'constant', $version );
 
 		self::assertSame( $version, Utils::get_plugin_version() );
-		$constant->wasCalledWithOnce( [ 'VK_MYTRACKER_VERSION' ] );
+		$constant->wasCalledWithOnce( [ 'VK_ANALYTICS_VERSION' ] );
 	}
 }

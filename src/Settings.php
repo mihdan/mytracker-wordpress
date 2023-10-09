@@ -5,7 +5,7 @@
  * @package mytarget
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 /**
  * Класс Settings
@@ -81,7 +81,7 @@ class Settings {
 				'title' => __( 'General', 'mytracker' ),
 				'desc'  => sprintf(
 				/* translators: %s: Official site */
-					__( 'MyTracker is multi-platform analytics and attribution for mobile apps and websites. More details at <a href="%1$s" target="_blank">%1$s</a>.', 'mytracker' ),
+					__( 'VK Analytics is multi-platform analytics and attribution for mobile apps and websites. More details at <a href="%1$s" target="_blank">%1$s</a>.', 'mytracker' ),
 					'https://tracker.my.com/'
 				),
 			)

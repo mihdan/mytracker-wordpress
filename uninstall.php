@@ -2,10 +2,10 @@
 /**
  * Обработчик деинсталляции плагина.
  *
- * @package mytracker
+ * @package vkanalytics
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	die;

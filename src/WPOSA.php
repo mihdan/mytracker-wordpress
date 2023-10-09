@@ -8,7 +8,7 @@
  * @package WPOSA
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 /**
  * WP_OSA.

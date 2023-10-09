@@ -1,4 +1,4 @@
-# About MyTracker
+# About VK Analytics
 
 ![CS](https://github.com/Yoast/wordpress-seo/actions/workflows/cs.yml/badge.svg)
 ![Lint](https://github.com/Yoast/wordpress-seo/actions/workflows/lint.yml/badge.svg)
@@ -6,7 +6,7 @@
 ![Deployment](https://github.com/Yoast/wordpress-seo/actions/workflows/deploy.yml/badge.svg)
 ![License](https://poser.pugx.org/yoast/wordpress-seo/license.svg)
 
-MyTracker — Analytics and attribution system for mobile apps and websites.
+VK Analytics — Analytics and attribution system for mobile apps and websites.
 
 ## Разработка
 
@@ -17,7 +17,7 @@ MyTracker — Analytics and attribution system for mobile apps and websites.
 cd wp-content/plugins
 
 # Склонируйте репозиторий в эту папку
-git clone git@github.com:mihdan/mytracker.git
+git clone git@github.com:mihdan/vkanalytics-wordpress.git
 
 # Установите зависимости
 composer install

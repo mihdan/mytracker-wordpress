@@ -2,10 +2,10 @@
 /**
  * Основной файл плагина.
  *
- * @package mytracker
+ * @package vkanalytics
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 use Auryn\Injector;
 use Auryn\InjectionException;
@@ -62,7 +62,7 @@ class Main {
 		$this->load_requirements();
 		$this->setup_hooks();
 
-		do_action( 'vk/mytracker/init', $this );
+		do_action( 'vk/analytics/init', $this );
 	}
 
 	/**

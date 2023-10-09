@@ -6,7 +6,7 @@
  * @link https://github.com/tracker-my-com/s2s-api/blob/master/src/Example.php
  */
 
-namespace VK\MyTracker;
+namespace VK\Analytics;
 
 use WP_User;
 

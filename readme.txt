@@ -1,17 +1,17 @@
-=== MyTracker ===
+=== VK Analytics ===
 Contributors: mihdan,mytracker
-Tags: mytracker,vk,mailru,analytics
+Tags: vk,analytics,mailru
 Requires at least: 5.0
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Analytics and attribution system for mobile apps and websites.
 
 == Description ==
-[MyTracker](https://tracker.my.com/promo) - Analytics and attribution system for mobile apps and websites.
+[VK Analytics](https://tracker.my.com/promo) - Analytics and attribution system for mobile apps and websites.
 
 For those who value accuracy. Attribution and product metrics, predictive analytics and fraud protection.
 
@@ -48,6 +48,10 @@ Track and measure all of your monetization efforts with MyTracker: in-app purcha
 2. Activate the plugin through the ‘Plugins’ menu in WordPress.
 
 == Changelog ==
+
+= 1.1.0 (09.10.2023) =
+- Added support for WordPress 6.3
+- Rebranded the plugin
 
 = 1.0.3 (05.04.2023) =
 - Added ability to delete log file

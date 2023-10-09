@@ -1,16 +1,16 @@
 {
-  "name": "vk/mytracker",
+  "name": "vk/analytics",
   "description": "Мультиплатформенная система аналитики и атрибуции для мобильных приложений и сайтов",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
-      "VK\\MyTracker\\": "src/"
+      "VK\\Analytics\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "VK\\MyTracker\\": "tests/phpunit/tests"
+      "VK\\Analytics\\": "tests/phpunit/tests"
     }
   },
   "authors": [

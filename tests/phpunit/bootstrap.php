@@ -35,8 +35,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', PLUGIN_PATH . '/../../../' );
 }
 
-define( 'VK_MYTRACKER_TEST_VERSION', '7.7.7' );
-define( 'VK_MYTRACKER_TEST_NAME', 'Mytracker' );
+define( 'VK_ANALYTICS_TEST_VERSION', '7.7.7' );
+define( 'VK_ANALYTICS_TEST_NAME', 'Mytracker' );
 
 FunctionMocker::init(
 	[
