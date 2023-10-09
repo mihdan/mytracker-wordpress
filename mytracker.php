@@ -2,7 +2,7 @@
 /**
  * Plugin Name: VK Analytics
  * Description: VK Analytics is multi-platform analytics and attribution for mobile apps and websites.
- * Version: 1.1.0
+ * Version: 1.1.0.1
  * Author: VK Team
  * Author URI: https://vk.team
  * Plugin URI: https://wordpress.org/plugins/mytracker/
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'VK_ANALYTICS_VERSION', '1.1.0' );
+define( 'VK_ANALYTICS_VERSION', '1.1.0.1' );
 define( 'VK_ANALYTICS_NAME', 'VK Analytics' );
 define( 'VK_ANALYTICS_PREFIX', 'vkanalytics' );
 define( 'VK_ANALYTICS_SLUG', 'vkanalytics' );
