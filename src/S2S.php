@@ -187,6 +187,12 @@ class S2S {
 			'eventTimestamp' => time(),
 		];
 
+		$lvid = $this->get_lvid();
+
+		if ( $lvid ) {
+			$defaults['lvid'] = $lvid;
+		}
+
 		$data = wp_parse_args( $data, $defaults );
 
 		$args = [
@@ -209,10 +215,23 @@ class S2S {
 
 		$status = wp_remote_retrieve_response_code( $response );
 
-		if ( $status === 200 ) {
-			return true;
+		return $status === 200;
+	}
+
+	/**
+	 * Получается идентификатор устройства пользователя.
+	 *
+	 * @return string
+	 */
+	private function get_lvid(): string {
+		$cookie_name = Utils::get_plugin_slug() . '_lvid';
+
+		$lvid = sanitize_text_field( wp_unslash( $_COOKIE[ $cookie_name ] ?? '' ) );
+
+		if ( $lvid === '' || mb_strlen( $lvid ) !== 32 ) {
+			return '';
 		}
 
-		return false;
+		return $lvid;
 	}
 }

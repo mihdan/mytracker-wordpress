@@ -53,6 +53,9 @@ Track and measure all of your monetization efforts with MyTracker: in-app purcha
 - Added support for WordPress 6.3
 - Rebranded the plugin
 
+= 1.0.4 (13.04.2023) =
+- Added ability to track a user by device
+
 = 1.0.3 (05.04.2023) =
 - Added ability to delete log file
 - Added links to documentation in plugin settings
