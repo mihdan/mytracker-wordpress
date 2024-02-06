@@ -5,7 +5,7 @@
  * @package mytarget
  */
 
-namespace VK\Analytics;
+namespace VK\MyTracker;
 
 /**
  * Класс Settings

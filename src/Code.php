@@ -2,10 +2,10 @@
 /**
  * Выводит код трекера во фронтенде.
  *
- * @package vkanalytics
+ * @package mytracker
  */
 
-namespace VK\Analytics;
+namespace VK\MyTracker;
 
 /**
  * Class Code.

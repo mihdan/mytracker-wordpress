@@ -2,10 +2,10 @@
 /**
  * Основной файл плагина.
  *
- * @package vkanalytics
+ * @package mytracker
  */
 
-namespace VK\Analytics;
+namespace VK\MyTracker;
 
 use Auryn\Injector;
 use Auryn\InjectionException;
