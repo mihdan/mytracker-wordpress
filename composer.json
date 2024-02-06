@@ -1,16 +1,16 @@
 {
-  "name": "vk/analytics",
+  "name": "vk/mytracker",
   "description": "Мультиплатформенная система аналитики и атрибуции для мобильных приложений и сайтов",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
-      "VK\\Analytics\\": "src/"
+      "VK\\MyTracker\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "VK\\Analytics\\": "tests/phpunit/tests"
+      "VK\\MyTracker\\": "tests/phpunit/tests"
     }
   },
   "authors": [
@@ -50,7 +50,7 @@
   "scripts": {
     "phpcs": "phpcs --standard=./phpcs.xml",
     "phpcbf": "phpcbf --standard=./phpcs.xml",
-    "psalm": "vendor/bin/psalm --config=./psalm.xml",
+    "psalm": "psalm --config=./psalm.xml",
     "unit": "phpunit -c ./phpunit.xml"
   }
 }

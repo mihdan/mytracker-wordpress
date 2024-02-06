@@ -5,7 +5,7 @@
  * @package mytarget
  */
 
-namespace VK\Analytics;
+namespace VK\MyTracker;
 
 /**
  * Класс Utils.
@@ -17,7 +17,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_path(): string {
-		return constant( 'VK_ANALYTICS_DIR_PATH' );
+		return constant( 'VK_MYTRACKER_DIR_PATH' );
 	}
 
 	/**
@@ -26,7 +26,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_basename(): string {
-		return constant( 'VK_ANALYTICS_DIR_BASENAME' );
+		return constant( 'VK_MYTRACKER_BASENAME' );
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_version(): string {
-		return constant( 'VK_ANALYTICS_VERSION' );
+		return constant( 'VK_MYTRACKER_VERSION' );
 	}
 
 	/**
@@ -44,7 +44,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_file(): string {
-		return constant( 'VK_ANALYTICS_FILE' );
+		return constant( 'VK_MYTRACKER_FILE' );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_url(): string {
-		return constant( 'VK_ANALYTICS_DIR_URL' );
+		return constant( 'VK_MYTRACKER_DIR_URL' );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_slug(): string {
-		return constant( 'VK_ANALYTICS_SLUG' );
+		return constant( 'VK_MYTRACKER_SLUG' );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_prefix(): string {
-		return constant( 'VK_ANALYTICS_PREFIX' );
+		return constant( 'VK_MYTRACKER_PREFIX' );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Utils {
 	 * @return string
 	 */
 	public static function get_plugin_name(): string {
-		return constant( 'VK_ANALYTICS_NAME' );
+		return constant( 'VK_MYTRACKER_NAME' );
 	}
 
 	/**
