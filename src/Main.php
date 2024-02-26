@@ -112,11 +112,11 @@ class Main {
 	/**
 	 * Добавляет текст в футер админки.
 	 *
-	 * @param string $text Текст по умолчанию.
+	 * @param string|null $text Текст по умолчанию.
 	 *
 	 * @return string
 	 */
-	public function add_footer_text( string $text ): string {
+	public function add_footer_text( ?string $text ): string {
 		if ( get_current_screen()->base !== 'settings_page_' . Utils::get_plugin_prefix() ) {
 			return $text;
 		} else {
