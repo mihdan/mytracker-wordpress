@@ -4,7 +4,7 @@ Tags: vk,analytics,mailru,mytracker,mihdan
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,9 @@ Track and measure all of your monetization efforts with MyTracker: in-app purcha
 2. Activate the plugin through the ‘Plugins’ menu in WordPress.
 
 == Changelog ==
+
+= 1.1.3 (08.04.2024) =
+* Added support for WordPress 6.5+
 
 = 1.1.2 (26.02.2024) =
 * Fixed errors in the admin panel
