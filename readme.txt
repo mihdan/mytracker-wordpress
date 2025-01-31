@@ -2,9 +2,9 @@
 Contributors: mihdan,mytracker
 Tags: vk,analytics,mailru,mytracker,mihdan
 Requires at least: 5.6
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,9 @@ Service License agreement: [https://help.mail.ru/legal/terms/top/LA/eng](https:/
 2. Activate the plugin through the ‘Plugins’ menu in WordPress.
 
 == Changelog ==
+
+= 1.1.5 (31.01.2024) =
+* Added support for WordPress 6.7+
 
 = 1.1.4 (10.04.2024) =
 * Added support for PHP 8.3+
